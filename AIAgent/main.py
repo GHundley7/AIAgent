@@ -23,4 +23,10 @@ response = client.chat.completions.create(
     ],
 )
 
+if response.usage == None:
+    raise RuntimeError("No usage data, likely a failed API request")
+else:
+    print(f"Prompt tokens: {response.usage.prompt_tokens}")
+    print(f"Response tokens: {response.usage.completion_tokens}")
+
 print(response.choices[0].message.content)
