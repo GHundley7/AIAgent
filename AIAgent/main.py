@@ -18,14 +18,16 @@ parser = argparse.ArgumentParser(description="Charbot")
 parser.add_argument("user_prompt", type=str, help="What would you like to ask AI Agent?")
 args = parser.parse_args()
 
-response = client.chat.completions.create(
-    model="openrouter/free",
-    messages=[
+messages = [
         {
             "role": "user",
             "content": args.user_prompt,
-        }
-    ],
+        },
+    ]
+
+response = client.chat.completions.create(
+    model="openrouter/free",
+    messages=messages,
 )
 
 if response.usage == None:
