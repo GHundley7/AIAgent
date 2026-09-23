@@ -6,9 +6,16 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
     valid_target_dir = os.path.commonpath([wd_abs, target_dir]) == wd_abs
     if valid_target_dir == False:
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
-    elif os.path.isdir(directory) == False:
+    elif os.path.isdir(target_dir) == False:
         return f'Error: "{directory}" is not a directory'
     else:
-        return f'Success: "{directory}" is within the working directory'
-
+        contents = os.listdir(target_dir)
+        list_items = []
+        for item in contents:
+            target_file = os.path.normpath(os.path.join(target_dir, item))
+            item_size = os.path.getsize(target_file)
+            valid_dir = os.path.isdir(target_file)
+            list_items.append(f"- {item}: file_size={item_size} bytes, is_dir={valid_dir}")
+        return_string = "\n".join(list_items)
+        return return_string
 
