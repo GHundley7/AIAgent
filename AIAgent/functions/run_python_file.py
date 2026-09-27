@@ -33,12 +33,10 @@ schema_run_python_file = {
         "description": "Executes python file and passes in arguments provided to the file, validates the existence of a file before attempting to execute",
         "parameters": {
             "type": "object",
-            "properties": {
-                "required": {
-                    "file_path": {
-                        "type": "string",
-                        "description": "File path to desired python file to be run, relative to the working directory"
-                    }
+            "properties": {            
+                "file_path": {
+                    "type": "string",
+                    "description": "File path to desired python file to be run, relative to the working directory"
                 },
                 "args": {
                     "type": "array",
@@ -46,9 +44,10 @@ schema_run_python_file = {
                     "items": {
                         "type": "string",
                         "description": "argument to be passed into python file being run"
-                    }
-                }
-            }
+                    },
+                },
+            },
+            "required": ["file_path"],
         }
     }
 }
