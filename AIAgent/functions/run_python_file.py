@@ -25,3 +25,30 @@ def run_python_file(working_directory: str, file_path: str, args: list[str] | No
     if file_output.stderr:
         return_string += f"STDERR: {file_output.stderr}\n"
     return return_string
+
+schema_run_python_file = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": "Executes python file and passes in arguments provided to the file, validates the existence of a file before attempting to execute",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "file_path": {
+                        "type": "string",
+                        "description": "File path to desired python file to be run, relative to the working directory"
+                    }
+                },
+                "args": {
+                    "type": "array",
+                    "description": "List of arguments to be passed into python file being run",
+                    "items": {
+                        "type": "string",
+                        "description": "argument to be passed into python file being run"
+                    }
+                }
+            }
+        }
+    }
+}

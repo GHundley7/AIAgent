@@ -29,7 +29,7 @@ schema_get_files_info = {
             "properties": {
                 "directory": {
                     "type": "string",
-                    "description": "Directory path to list friles from, relative to the working directory (default is the working directory itself)",
+                    "description": "Directory path to list files from, relative to the working directory (default is the working directory itself)",
                 }
             }
         }
