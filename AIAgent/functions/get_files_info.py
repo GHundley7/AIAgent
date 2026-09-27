@@ -19,3 +19,19 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
         return_string = "\n".join(list_items)
         return return_string
 
+schema_get_files_info = {
+    "type": "function",
+    "function": {
+        "name": "get_files_info",
+        "description": "Lists files in a specified directory relative to the working directory, providing file size and directory status",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "directory": {
+                    "type": "string",
+                    "description": "Directory path to list friles from, relative to the working directory (default is the working directory itself)",
+                }
+            }
+        }
+    }
+}
